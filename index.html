@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xercaii | Public Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- Menu Icon -->
+<div id="menuIcon" onclick="toggleMenu()">☰</div>
+
+<!-- Sliding Menu -->
+<div id="menu">
+  <h2>Settings</h2>
+  <label>
+    <input type="checkbox" id="audioToggle" checked onchange="toggleAudio()"> Enable Audio
+  </label>
+  <label>
+    <input type="checkbox" id="videoToggle" checked onchange="toggleVideo()"> Enable Background Video
+  </label>
+  <label>
+    <input type="radio" name="theme" id="dayMode" checked onclick="setDayMode()"> Day Mode
+  </label>
+  <label>
+    <input type="radio" name="theme" id="nightMode" onclick="setNightMode()"> Night Mode
+  </label>
+</div>
+
+  <!-- Music Player -->
+  <div class="music-player">
+    <button id="playPauseBtn" onclick="togglePlayPause()">
+      <span id="playPauseIcon">⏸</span>
+    </button>
+    <span class="song-title" id="songTitle">Now Playing: Lecrae - TELL THE WORLD</span>
+    <audio id="bgAudio" src="{{ url_for('static', filename='audio/background.mp4') }}" preload="auto" autoplay muted></audio>
+  </div>
+
+  <!-- Background Video -->
+<video autoplay loop muted playsinline id="bg-video">
+  <source id="videoSource" src="{{ url_for('static', filename='video/background.mp4') }}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<div class="overlay"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/pfp.jpg') }}" alt="Profile Picture">
+      <h1>Xercaii</h1>
+      <p>Creative | Developer | Visionary</p>
+      <div class="links">
+        <button onclick="window.open('https://www.youtube.com/@Xercaii')">YouTube</button>
+        <button onclick="window.open('https://discord.com/channels/1347403988793950308/1347404846990491648')">Discord</button>
+        <button onclick="window.open('https://www.instagram.com/757zaya_/')">Instagram</button>
+      </div>
+
+      <h2>Contact Me</h2>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form id="contact-form" action="https://formspree.io/f/xovegeav" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      
+      <!-- Success/Failure Notification -->
+      <div id="form-alert" style="display: none; margin-top: 10px;"></div>
+      
+      <script>
+        const form = document.getElementById('contact-form');
+        const alertBox = document.getElementById('form-alert');
+      
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault(); // Prevent default form submission
+          const formData = new FormData(form);
+      
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              body: formData,
+              headers: {
+                'Accept': 'application/json',
+              },
+            });
+      
+            if (response.ok) {
+              alertBox.style.display = 'block';
+              alertBox.textContent = 'Message sent successfully!';
+              alertBox.style.color = 'green';
+              form.reset();
+      
+              // Hide the alert after 5 seconds
+              setTimeout(() => {
+                alertBox.style.display = 'none';
+              }, 5000);
+            } else {
+              throw new Error('Failed to send message.');
+            }
+          } catch (error) {
+            alertBox.style.display = 'block';
+            alertBox.textContent = 'An error occurred. Please try again.';
+            alertBox.style.color = 'red';
+      
+            // Hide the alert after 5 seconds
+            setTimeout(() => {
+              alertBox.style.display = 'none';
+            }, 5000);
+          }
+        });
+      </script>
+
+  <!-- Expandable Song Title Script -->
+  <script>
+    const songTitle = document.getElementById('songTitle');
+    songTitle.addEventListener('click', () => {
+      songTitle.classList.toggle('expanded');
+    });
+  </script>
+
+<script>
+  const bgVideo = document.getElementById('bg-video');
+
+  bgVideo.addEventListener('ended', () => {
+    bgVideo.currentTime = 0; // Restart the video
+    bgVideo.play(); // Play the video again
+  });
+</script>
+
+<script>
+  const audio = document.getElementById('bgAudio');
+  const video = document.getElementById('bg-video');
+  const videoSource = document.getElementById('videoSource');
+  const playPauseIcon = document.getElementById('playPauseIcon');
+  let isPlaying = true;
+
+  // Toggle Sliding Menu
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('open');
+  }
+
+  // Toggle Audio
+  function toggleAudio() {
+    const audioToggle = document.getElementById('audioToggle');
+    if (audioToggle.checked) {
+      audio.muted = false;
+      audio.play();
+    } else {
+      audio.muted = true;
+      audio.pause();
+    }
+  }
+
+  // Toggle Video
+  function toggleVideo() {
+    const videoToggle = document.getElementById('videoToggle');
+    video.style.display = videoToggle.checked ? 'block' : 'none';
+  }
+
+  // Set Day Mode
+  function setDayMode() {
+    console.log("Switching to Day Mode...");
+    document.body.classList.remove('night-mode');
+    videoSource.src = "{{ url_for('static', filename='video/background.mp4') }}"; // Set to day mode video
+    video.load(); // Reload the video source
+    console.log("Day mode video source set:", videoSource.src);
+  }
+
+  // Set Night Mode
+  function setNightMode() {
+    console.log("Switching to Night Mode...");
+    document.body.classList.add('night-mode');
+    videoSource.src = "{{ url_for('static', filename='video/nightmode.mp4') }}"; // Set to night mode video
+    video.load(); // Reload the video source
+    console.log("Night mode video source set:", videoSource.src);
+  }
+
+  // Automatically unmute and play audio on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    audio.muted = false; // Unmute the audio
+    audio.play().then(() => {
+      console.log("Audio started playing automatically.");
+    }).catch(err => {
+      console.error("Audio autoplay blocked by browser:", err);
+    });
+  });
+
+  // Toggle Play/Pause for Audio and Video
+  function togglePlayPause() {
+    if (isPlaying) {
+      // Pause both audio and video
+      audio.pause();
+      video.pause();
+      playPauseIcon.textContent = '▶'; // Update icon to "Play"
+    } else {
+      // Play both audio and video
+      audio.play().then(() => {
+        video.play();
+        playPauseIcon.textContent = '⏸'; // Update icon to "Pause"
+      }).catch(err => {
+        console.error('Error playing audio or video:', err);
+      });
+    }
+    isPlaying = !isPlaying; // Toggle state
+  }
+</script>
+</body>
+</html>
