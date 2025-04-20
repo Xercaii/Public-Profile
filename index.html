@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Xercaii | Public Profile</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -34,12 +34,12 @@
       <span id="playPauseIcon">⏸</span>
     </button>
     <span class="song-title" id="songTitle">Now Playing: Lecrae - TELL THE WORLD</span>
-    <audio id="bgAudio" src="{{ url_for('static', filename='audio/backgroundaudio.mp4') }}" preload="auto" autoplay muted></audio>
+    <audio id="bgAudio" src="{{ url_for('static', filename='backgroundaudio.mp4') }}" preload="auto" autoplay muted></audio>
   </div>
 
   <!-- Background Video -->
 <video autoplay loop muted playsinline id="bg-video">
-  <source id="videoSource" src="{{ url_for('static', filename='video/backgroundvideo.mp4') }}" type="video/mp4">
+  <source id="videoSource" src="{{ url_for('static', filename='backgroundvideo.mp4') }}" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 <div class="overlay"></div>
@@ -47,7 +47,7 @@
   <!-- Main Container -->
   <div class="container">
     <div class="card">
-      <img src="{{ url_for('static', filename='images/pfp.jpg') }}" alt="Profile Picture">
+      <img src="{{ url_for('static', filename='pfp.jpg') }}" alt="Profile Picture">
       <h1>Xercaii</h1>
       <p>Creative | Developer | Visionary</p>
       <div class="links">
@@ -170,7 +170,7 @@
   function setDayMode() {
     console.log("Switching to Day Mode...");
     document.body.classList.remove('night-mode');
-    videoSource.src = "{{ url_for('static', filename='video/background.mp4') }}"; // Set to day mode video
+    videoSource.src = "{{ url_for('static', filename='background.mp4') }}"; // Set to day mode video
     video.load(); // Reload the video source
     console.log("Day mode video source set:", videoSource.src);
   }
@@ -179,7 +179,7 @@
   function setNightMode() {
     console.log("Switching to Night Mode...");
     document.body.classList.add('night-mode');
-    videoSource.src = "{{ url_for('static', filename='video/nightmode.mp4') }}"; // Set to night mode video
+    videoSource.src = "{{ url_for('static', filename='nightmode.mp4') }}"; // Set to night mode video
     video.load(); // Reload the video source
     console.log("Night mode video source set:", videoSource.src);
   }
