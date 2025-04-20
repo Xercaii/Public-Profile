@@ -6,6 +6,7 @@
   <title>Xercaii | Public Profile</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<script src="script.js"></script>
 <body>
 
 <!-- Menu Icon -->
@@ -34,12 +35,12 @@
       <span id="playPauseIcon">⏸</span>
     </button>
     <span class="song-title" id="songTitle">Now Playing: Lecrae - TELL THE WORLD</span>
-    <audio id="bgAudio" src="{{ url_for('static', filename='backgroundaudio.mp4') }}" preload="auto" autoplay muted></audio>
+    <audio id="bgAudio" src="backgroundaudio.mp4" preload="auto" autoplay muted></audio>
   </div>
 
   <!-- Background Video -->
 <video autoplay loop muted playsinline id="bg-video">
-  <source id="videoSource" src="{{ url_for('static', filename='backgroundvideo.mp4') }}" type="video/mp4">
+  <source id="videoSource" src="backgroundvideo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 <div class="overlay"></div>
@@ -47,7 +48,7 @@
   <!-- Main Container -->
   <div class="container">
     <div class="card">
-      <img src="{{ url_for('static', filename='pfp.jpg') }}" alt="Profile Picture">
+      <img src="pfp.jpg" alt="Profile Picture">
       <h1>Xercaii</h1>
       <p>Creative | Developer | Visionary</p>
       <div class="links">
@@ -170,7 +171,7 @@
   function setDayMode() {
     console.log("Switching to Day Mode...");
     document.body.classList.remove('night-mode');
-    videoSource.src = "{{ url_for('static', filename='background.mp4') }}"; // Set to day mode video
+    videoSource.src = "backgroundvideo.mp4"; // Direct path to day mode video file
     video.load(); // Reload the video source
     console.log("Day mode video source set:", videoSource.src);
   }
@@ -179,7 +180,7 @@
   function setNightMode() {
     console.log("Switching to Night Mode...");
     document.body.classList.add('night-mode');
-    videoSource.src = "{{ url_for('static', filename='nightmode.mp4') }}"; // Set to night mode video
+    videoSource.src = "nightmode.mp4"; // Direct path to night mode video file
     video.load(); // Reload the video source
     console.log("Night mode video source set:", videoSource.src);
   }
