@@ -1,0 +1,439 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2;
+  object-fit: cover;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centers all content vertically */
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+p {
+  font-size: 1em;
+  font-weight: 300;
+  color: #ddd;
+  margin: 10px 0 20px;
+}
+
+.links button {
+  background: white;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.links button:hover {
+  background: #f04a4a;
+  color: white;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 1.2em;
+  color: white;
+}
+
+.flash {
+  background-color: rgba(255, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+form input,
+form textarea {
+  text-align: center;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1em;
+  backdrop-filter: blur(5px);
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #d43c3c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #d43c3c;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+form button {
+  align-self: center;
+}
+
+/* Prevent draggable form elements */
+form input,
+form textarea {
+  resize: none;
+  width: 100%;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1em;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Message Submit Button */
+form button {
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #cdc7c7, #dacaca);
+  backdrop-filter: blur(20px);
+  opacity: 60%;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 14px;
+  font-size: 1.05em;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+form button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); /* Darker animation color */
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+form button:hover::before {
+  left: 125%;
+  background: rgba(255, 255, 255, 0.3); /* Slightly darker animation on hover */
+}
+
+form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow adjustment */
+}
+
+/* Top icon/link buttons */
+.links button {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 18px;
+  margin: 6px;
+  font-weight: 500;
+  font-size: 0.95em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.links button:hover {
+  background: rgba(255,255,255,0.3);
+  color: #111;
+  transform: scale(1.05);
+}
+
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  padding: 8px 14px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 100;
+  color: white;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.music-player button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.song-title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  transition: max-width 0.4s ease;
+  cursor: pointer;
+}
+
+.song-title.expanded {
+  max-width: 1000px;
+}
+
+#menuIcon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 2em;
+  color: rgb(231, 228, 228);
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 200;
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  left: -2100px; /* Fully hides the menu off-screen */
+  height: 100%;
+  width: 100%; /* Make the menu take the full screen width */
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(20px);
+  z-index: 150;
+  transition: left 0.4s ease;
+  color: white;
+
+  /* Flexbox for centering content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Ensure text is properly aligned */
+  padding: 0; /* Remove any padding that may offset alignment */
+  margin: 0; /* Remove margin to avoid offsets */
+  box-sizing: border-box; /* Ensure padding and border are included in width/height calculations */
+}
+
+#menu.open {
+  left: 0; /* Slide the menu into view */
+}
+
+#menu h2 {
+  font-size: 2.5em; /* Slightly larger font for prominence */
+  margin-bottom: 30px;
+  color: white;
+}
+
+#menu label {
+  font-size: 1.2em;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#menu label input {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+#menuIcon:hover {
+  color: rgb(156, 152, 152);
+  transform: scale(1.20);
+  transition: 0.3s ease;
+}
+
+#menuIcon:active {
+  color: rgb(255, 255, 255);
+  filter: brightness(250%);
+  transform: scale(1.35);
+  transition: 0.1s ease;
+}
+
+/* Night mode */
+body.night-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.night-mode .card {
+  background: rgba(50, 50, 50, 0.6);
+  opacity: 90%;
+}
+
+body.night-mode form button {
+  background: linear-gradient(135deg, #000000, #000000);
+  opacity: 72%;
+  color: rgb(255, 255, 255);
+}
+
+body.night-mode #menu {
+  background: rgba(20, 20, 20, 0.70);
+  backdrop-filter: blur(15px);
+}
+
+body.night-mode #bg-video {
+  opacity: 50% ;
+}
+
+body.night-mode .music-player {
+  opacity: 65%;
+}
+
+body.night-mode #menuIcon {
+  opacity: 70%;
+}
+
+body.night-mode #menuIcon:hover {
+  color:rgb(255, 255, 255);
+  transform: scale(1.20);
+  transition: 0.3s ease;
+  opacity: 100%;
+}
+
+body.night-mode #menuIcon:active {
+  color:rgb(255, 255, 255);
+  filter: brightness(250%);
+  transform: scale(1.35);
+  transition: 0.1s ease;
+}
+
+#form-alert {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#form-alert.green {
+  background-color: #4CAF50; /* Success Green */
+  color: white;
+}
+
+#form-alert.red {
+  background-color: #F44336; /* Error Red */
+  color: white;
+}
