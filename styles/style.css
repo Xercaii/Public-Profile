@@ -546,56 +546,103 @@ body.night-mode #menuIcon:active {
   overflow: hidden;
 }
 
-/* Apply scaling for smaller screens */
-@media (max-width: 768px) {
-  .container {
-    transform: scale(0.9); /* Scale down proportionally for smaller screens */
-  }
+/* Fixed Layout */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-@media (max-width: 480px) {
-  .container {
-    transform: scale(0.8); /* Further scale down for very small screens */
-  }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
 }
 
-/* Prevent elements from exceeding the screen size */
 .card {
-  max-width: 500px;
-  max-height: 90vh;
-  overflow: auto; /* Allow scrolling if necessary */
+  width: 500px; /* Exact width */
+  height: 700px; /* Exact height */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  padding: 40px;
+  text-align: center;
 }
 
 /* Profile Picture */
 .card img {
-  width: 15vw; /* Scale based on viewport width */
-  height: auto; /* Maintain aspect ratio */
-  max-width: 120px; /* Prevent it from getting too large */
+  width: 120px; /* Fixed size */
+  height: 120px;
   border-radius: 50%;
+  margin-bottom: 20px;
 }
 
-/* Buttons */
+/* Headings */
+h1 {
+  font-size: 24px; /* Fixed font size */
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+p {
+  font-size: 14px; /* Fixed font size */
+  color: #ddd;
+  margin: 10px 0 20px;
+}
+
+/* Social Media Buttons */
 .links button {
-  padding: 2vh 4vw; /* Proportional padding */
-  font-size: 1.5vh; /* Scale text relative to viewport height */
-  background: white;
-  color: #333;
-  border: none;
-  margin: 5px;
-  font-weight: 500;
+  width: 150px; /* Fixed button width */
+  height: 40px; /* Fixed button height */
+  margin: 10px; /* Consistent spacing */
+  font-size: 14px; /* Fixed font size */
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s ease;
 }
 
 .links button:hover {
-  background: #f04a4a;
-  color: white;
+  background: rgba(255, 255, 255, 0.3);
+  color: black;
 }
 
-/* Disable Scrolling */
-html, body {
-  overflow: hidden;
+/* Contact Form */
+form input,
+form textarea {
+  width: 100%; /* Full width inside card */
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 14px; /* Fixed font size */
+}
+
+form button {
+  width: 100%; /* Full width inside card */
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  font-size: 14px; /* Fixed font size */
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
 }
 
 /* Music Player */
@@ -610,8 +657,15 @@ html, body {
   padding: 8px 14px;
   border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  z-index: 100;
   color: white;
-  font-size: 0.95em;
-  font-weight: 500;
+  font-size: 14px; /* Fixed font size */
+}
+
+#menuIcon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 24px; /* Fixed size */
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
