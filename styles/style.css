@@ -437,3 +437,138 @@ body.night-mode #menuIcon:active {
   background-color: #F44336; /* Error Red */
   color: white;
 }
+
+/* Responsive Styles */
+
+/* Small Screen Adjustments (Mobile) */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Reduce container width */
+    margin: 0 auto; 
+  }
+
+  .card {
+    padding: 20px; 
+    text-align: center; 
+  }
+
+  .card img {
+    width: 80px; /* Scale down profile picture */
+    height: 80px; 
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 1.8em; /* Adjust font size for smaller screens */
+  }
+
+  p {
+    font-size: 1em; /* Adjust subtitle font size */
+  }
+
+  .links button {
+    display: block; /* Stack buttons vertically */
+    width: 100%; 
+    margin: 10px 0; 
+  }
+
+  form input, form textarea, form button {
+    width: 100%; /* Full width form elements */
+    margin: 10px 0;
+    font-size: 1em; /* Adjust font size */
+  }
+
+  #menuIcon {
+    font-size: 1.5em; /* Adjust menu icon size */
+  }
+
+  .music-player {
+    bottom: 10px; 
+    left: 10px; 
+    padding: 8px 10px; 
+    font-size: 0.9em; /* Adjust font size */
+  }
+
+  .song-title {
+    max-width: 150px; /* Reduce song title max width */
+  }
+}
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 480px) {
+  .card {
+    padding: 15px; 
+  }
+
+  .card img {
+    width: 70px; 
+    height: 70px; 
+  }
+
+  h1 {
+    font-size: 1.5em; 
+  }
+
+  p {
+    font-size: 0.9em; 
+  }
+
+  .links button {
+    font-size: 0.85em; 
+    padding: 8px 15px; 
+  }
+
+  form input, form textarea {
+    font-size: 0.9em; 
+  }
+
+  .music-player {
+    font-size: 0.85em; 
+  }
+
+  #menu h2 {
+    font-size: 2em; 
+  }
+
+  #menu label {
+    font-size: 1em; 
+  }
+}
+
+/* Large Screen Adjustments */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 800px; /* Wider container for large screens */
+  }
+
+  .card {
+    padding: 50px; 
+  }
+
+  .card img {
+    width: 150px; 
+    height: 150px; 
+  }
+
+  h1 {
+    font-size: 2.5em; 
+  }
+
+  p {
+    font-size: 1.2em; 
+  }
+
+  .links button {
+    padding: 12px 25px; 
+    font-size: 1em; 
+  }
+
+  form input, form textarea {
+    font-size: 1.1em; 
+    padding: 15px; 
+  }
+
+  .music-player {
+    font-size: 1em; 
+  }
+}
