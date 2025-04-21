@@ -535,40 +535,83 @@ body.night-mode #menuIcon:active {
   }
 }
 
-/* Large Screen Adjustments */
-@media (min-width: 1200px) {
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  transform: scale(1); /* Default scale */
+  transform-origin: center;
+  overflow: hidden;
+}
+
+/* Apply scaling for smaller screens */
+@media (max-width: 768px) {
   .container {
-    max-width: 800px; /* Wider container for large screens */
+    transform: scale(0.9); /* Scale down proportionally for smaller screens */
   }
+}
 
-  .card {
-    padding: 50px; 
+@media (max-width: 480px) {
+  .container {
+    transform: scale(0.8); /* Further scale down for very small screens */
   }
+}
 
-  .card img {
-    width: 150px; 
-    height: 150px; 
-  }
+/* Prevent elements from exceeding the screen size */
+.card {
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: auto; /* Allow scrolling if necessary */
+}
 
-  h1 {
-    font-size: 2.5em; 
-  }
+/* Profile Picture */
+.card img {
+  width: 15vw; /* Scale based on viewport width */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 120px; /* Prevent it from getting too large */
+  border-radius: 50%;
+}
 
-  p {
-    font-size: 1.2em; 
-  }
+/* Buttons */
+.links button {
+  padding: 2vh 4vw; /* Proportional padding */
+  font-size: 1.5vh; /* Scale text relative to viewport height */
+  background: white;
+  color: #333;
+  border: none;
+  margin: 5px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
-  .links button {
-    padding: 12px 25px; 
-    font-size: 1em; 
-  }
+.links button:hover {
+  background: #f04a4a;
+  color: white;
+}
 
-  form input, form textarea {
-    font-size: 1.1em; 
-    padding: 15px; 
-  }
+/* Disable Scrolling */
+html, body {
+  overflow: hidden;
+}
 
-  .music-player {
-    font-size: 1em; 
-  }
+/* Music Player */
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  padding: 8px 14px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 100;
+  color: white;
+  font-size: 0.95em;
+  font-weight: 500;
 }
