@@ -48,7 +48,7 @@
   <!-- Main Container -->
   <div class="container">
     <div class="card">
-      <img src="images/pfp.jpg" alt="Profile Picture">
+      <img src="extra/images/pfp.jpg" alt="Profile Picture">
       <h1>Xercaii</h1>
       <p>Creative | Developer | Visionary</p>
       <div class="links">
@@ -58,13 +58,7 @@
       </div>
 
       <h2>Contact Me</h2>
-      {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="flash">{{ message }}</div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+      <div id="form-alert" style="display: none; margin-top: 10px;"></div>
 
       <form id="contact-form" action="https://formspree.io/f/xovegeav" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
