@@ -453,13 +453,15 @@ body.night-mode #menuIcon:active {
   width: 35px; /* Reduced icon size */
   height: 35px; 
   cursor: pointer;
+
+  /* Smooth transitions for hover, hover-out, and click */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              opacity 0.3s ease, 
-              filter 0.3s ease;
+              opacity 0.4s ease-in-out, 
+              filter 0.4s ease-in-out;
   border-radius: 50%; /* Ensure circular shape */
   background: none; /* Ensure no background */
   box-shadow: none !important; /* No box shadow */
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); /* Stronger white glow */
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); /* Subtle white glow */
   outline: none; /* Remove any outline */
   border: none; /* Remove any border */
 }
@@ -468,20 +470,24 @@ body.night-mode #menuIcon:active {
 .mode-icons img:hover {
   transform: scale(1.3) rotate(15deg); /* Slightly larger scale and tilt on hover */
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)); /* More intense glow */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              filter 0.4s ease-in-out; /* Smooth hover transition */
 }
 
 /* Smooth Hover-Out Effects */
 .mode-icons img {
-  transform: scale(1) rotate(0deg); /* Reset to default */
+  transform: scale(1) rotate(0deg); /* Reset to default smoothly */
   filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); /* Reset glow */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              filter 0.4s ease; /* Smooth transition for hover-out */
+              filter 0.4s ease-in-out; /* Smooth hover-out transition */
 }
 
 /* Click Effects */
 .mode-icons img:active {
   transform: scale(1.1) rotate(-10deg); /* Slightly shrink and rotate on click */
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.9)); /* Subtle glow effect */
+  transition: transform 0.3s ease-in-out, 
+              filter 0.3s ease-in-out; /* Smooth click transition */
 }
 
 /* Persistent Glow Animation */
