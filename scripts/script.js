@@ -1,43 +1,65 @@
 console.log("Profile loaded!");
 
-// Add logic to toggle mode icons
-function updateModeIcons() {
-    const isNightMode = document.body.classList.contains('night-mode');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Initializing page...");
+  
+    // Select all required elements
     const nightIcon = document.getElementById('nightIcon');
     const dayIcon = document.getElementById('dayIcon');
     const dayModeRadio = document.getElementById('dayMode');
     const nightModeRadio = document.getElementById('nightMode');
+    const videoSource = document.getElementById('videoSource');
+    const video = document.getElementById('bg-video');
   
-    if (isNightMode) {
-      nightIcon.style.display = 'none'; // Hide the night icon
-      dayIcon.style.display = 'block'; // Show the day icon
-      nightModeRadio.checked = true; // Sync the radio button to night mode
-      dayModeRadio.checked = false;
-    } else {
-      nightIcon.style.display = 'block'; // Show the night icon
-      dayIcon.style.display = 'none'; // Hide the day icon
-      dayModeRadio.checked = true; // Sync the radio button to day mode
-      nightModeRadio.checked = false;
+    // Function to update icons and sync settings
+    function updateModeIcons() {
+      const isNightMode = document.body.classList.contains('night-mode');
+  
+      if (isNightMode) {
+        // Show the day icon (indicating you can switch to day mode)
+        nightIcon.style.display = 'none';
+        dayIcon.style.display = 'block';
+  
+        // Sync radio buttons
+        nightModeRadio.checked = true;
+        dayModeRadio.checked = false;
+      } else {
+        // Show the night icon (indicating you can switch to night mode)
+        nightIcon.style.display = 'block';
+        dayIcon.style.display = 'none';
+  
+        // Sync radio buttons
+        dayModeRadio.checked = true;
+        nightModeRadio.checked = false;
+      }
     }
-  }
   
-  // Override setDayMode to update icons and radio buttons
-  function setDayMode() {
-    document.body.classList.remove('night-mode'); // Remove night mode class
-    videoSource.src = "extra/videos/backgroundvideo.mp4"; // Set day mode video
-    video.load(); // Reload video
-    updateModeIcons(); // Update mode icons and radio buttons
-  }
+    // Function to switch to Day Mode
+    function setDayMode() {
+      document.body.classList.remove('night-mode');
+      videoSource.src = "extra/videos/backgroundvideo.mp4";
+      video.load();
+      updateModeIcons();
+      console.log("Switched to Day Mode.");
+    }
   
-  // Override setNightMode to update icons and radio buttons
-  function setNightMode() {
-    document.body.classList.add('night-mode'); // Add night mode class
-    videoSource.src = "extra/videos/nightmode.mp4"; // Set night mode video
-    video.load(); // Reload video
-    updateModeIcons(); // Update mode icons and radio buttons
-  }
+    // Function to switch to Night Mode
+    function setNightMode() {
+      document.body.classList.add('night-mode');
+      videoSource.src = "extra/videos/nightmode.mp4";
+      video.load();
+      updateModeIcons();
+      console.log("Switched to Night Mode.");
+    }
   
-  // Initialize icons and radio buttons on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    updateModeIcons(); // Ensure icons and settings match the current mode
+    // Initialize icons on page load
+    updateModeIcons();
+  
+    // Set up event listeners
+    nightIcon.addEventListener('click', setNightMode);
+    dayIcon.addEventListener('click', setDayMode);
+    dayModeRadio.addEventListener('click', setDayMode);
+    nightModeRadio.addEventListener('click', setNightMode);
+  
+    console.log("Event listeners set up.");
   });
